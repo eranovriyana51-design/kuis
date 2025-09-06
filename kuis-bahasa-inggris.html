@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Bahasa Inggris Tingkat Lanjut</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .text-block {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .question-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .question-number {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .option-button {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+            transition: all 0.2s;
+            cursor: pointer;
+            background-color: #f9fafb;
+            color: #374151;
+        }
+        .option-button:hover {
+            background-color: #e5e7eb;
+        }
+        .correct-answer {
+            background-color: #d1fae5;
+            border-color: #34d399;
+            color: #065f46;
+        }
+        .wrong-answer {
+            background-color: #fee2e2;
+            border-color: #f87171;
+            color: #991b1b;
+        }
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            border-left: 4px solid #6b7280;
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .submit-button {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .submit-button:hover {
+            background-color: #4b5563;
+        }
+        .checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .checkbox-container .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        .result-section {
+            display: none;
+            background-color: #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+
+    <div class="container bg-white rounded-xl shadow-lg p-6 md:p-10 my-8">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Soal Sumatif 1 Modul 1 BIG Tingkat Lanjut</h1>
+
+        <!-- Teks untuk Soal 1-8 -->
+        <div class="text-block">
+            <h2 class="text-xl font-bold mb-4 text-gray-700">Teks untuk soal nomor 1 s.d. 8</h2>
+            <p><strong>The Double-Edged Sword of Ecotourism in Kalimantan</strong></p>
+            <p class="mt-2 text-gray-600">Kalimantan, the Indonesian part of Borneo, is a treasure trove of biodiversity, home to ancient rainforests, unique wildlife like orangutans and proboscis monkeys, and vibrant indigenous cultures. To capitalize on these assets while promoting conservation, ecotourism is often presented as a sustainable solution. However, the development of ecotourism in this ecologically sensitive region is a complex issue with both significant benefits and considerable drawbacks.</p>
+            <p class="mt-2 text-gray-600">Proponents of ecotourism highlight its potential for economic empowerment and environmental protection. Firstly, it can provide alternative livelihoods for local communities who might otherwise depend on unsustainable practices like illegal logging or poaching. By working as guides, homestay owners, or artisans, residents can earn a stable income that is directly linked to the preservation of their natural surroundings. Secondly, revenue generated from tourism fees can be reinvested into conservation projects, funding patrols to prevent deforestation and wildlife trafficking, and supporting habitat restoration. This model creates a virtuous cycle where the environment's health directly contributes to economic prosperity, encouraging communities to become its staunchest protectors.</p>
+            <p class="mt-2 text-gray-600">On the other hand, critics raise valid concerns about the potential negative impacts. The influx of tourists, even in regulated numbers, can disturb wildlife behavior, disrupt natural habitats, and generate waste that the fragile ecosystem struggles to absorb. Furthermore, the commodification of indigenous cultures—turning traditions and rituals into tourist spectacles—can erode their authenticity and lead to the loss of traditional values. There is also the risk of 'leakage,' where most of the tourism revenue flows to foreign-owned companies or large operators in urban centers, leaving local communities with minimal financial gain.</p>
+            <p class="mt-2 text-gray-600">While ecotourism offers a path to conservation and sustainable development, it is not a cure-all. To be truly effective, it requires careful planning, strict regulation, and a multi-pronged approach that ensures local communities are not just passive beneficiaries but active partners in managing their resources. Without these measures, the "sustainable" label of ecotourism can become little more than greenwashing, causing more harm than good to the very environments it claims to protect.</p>
+        </div>
+
+        <form id="quizForm">
+            <!-- Soal 1 -->
+            <div class="question-card" data-question-number="1">
+                <div class="question-number">Soal 1</div>
+                <div class="question-text">
+                    What is the main idea of the text?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q1" value="A">
+                        <span>A. The importance of preserving the rainforests in Kalimantan for wildlife.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q1" value="B">
+                        <span>B. How ecotourism in Kalimantan provides a stable income for local communities.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q1" value="C">
+                        <span>C. The debate over whether ecotourism in Kalimantan is truly a sustainable solution.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q1" value="D">
+                        <span>D. The negative impacts of mass tourism on the indigenous cultures of Borneo.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q1" value="E">
+                        <span>E. The government's new plans to develop more national parks in Kalimantan.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Teks ini membahas sisi baik (benefits) dan sisi buruk (drawbacks) dari ekowisata di Kalimantan. Ide utama teks ini adalah memperdebatkan apakah ekowisata benar-benar solusi yang berkelanjutan, dengan menyebutkan manfaatnya (ekonomi, konservasi) dan kekurangannya (dampak negatif pada lingkungan dan budaya). Opsi A, B, D, dan E hanya mencakup sebagian kecil dari isi teks.</p>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="question-card" data-question-number="2">
+                <div class="question-number">Soal 2</div>
+                <div class="question-text">
+                    The word "treasure trove" in the first paragraph is closest in meaning to...
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q2" value="A">
+                        <span>A. a place with a lot of hidden dangers.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q2" value="B">
+                        <span>B. a location that is difficult to access.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q2" value="C">
+                        <span>C. a repository of valuable things.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q2" value="D">
+                        <span>D. a large and empty container.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q2" value="E">
+                        <span>E. a controversial and unsafe place.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Frasa "treasure trove" secara harfiah berarti 'gudang harta karun'. Dalam konteks ini, frasa tersebut digunakan untuk menggambarkan Kalimantan sebagai tempat yang kaya akan sumber daya alam dan budaya yang berharga, seperti hutan hujan, satwa liar, dan budaya asli. Oleh karena itu, arti yang paling dekat adalah "a repository of valuable things".</p>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="question-card" data-question-number="3">
+                <div class="question-number">Soal 3</div>
+                <div class="question-text">
+                    What does the phrase "virtuous cycle" in the second paragraph refer to?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q3" value="A">
+                        <span>A. The continuous process of deforestation and habitat loss.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q3" value="B">
+                        <span>B. A situation where environmental health and economic prosperity mutually reinforce each other.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q3" value="C">
+                        <span>C. The way tourists from different countries interact with each other.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q3" value="D">
+                        <span>D. The process of turning natural resources into consumer products.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q3" value="E">
+                        <span>E. A negative pattern of economic decline and environmental degradation.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Frasa "virtuous cycle" mengacu pada hubungan timbal balik positif. Dalam konteks ini, teks menjelaskan bagaimana kesehatan lingkungan (environment's health) dapat secara langsung menyumbang pada kemakmuran ekonomi (economic prosperity). Ini menciptakan lingkaran di mana perlindungan lingkungan menghasilkan uang, dan uang tersebut digunakan untuk lebih melindungi lingkungan, yang saling menguntungkan.</p>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="question-card" data-question-number="4">
+                <div class="question-number">Soal 4</div>
+                <div class="question-text">
+                    Which of the following is NOT mentioned as a potential negative impact of ecotourism in the text?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q4" value="A">
+                        <span>A. The commodification of indigenous cultures.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q4" value="B">
+                        <span>B. The risk of revenue "leakage" to outside companies.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q4" value="C">
+                        <span>C. An increase in illegal logging activities.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q4" value="D">
+                        <span>D. Disturbance of wildlife behavior.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q4" value="E">
+                        <span>E. The generation of waste that the ecosystem cannot handle.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Pilihan A, B, D, dan E semuanya disebutkan dalam teks sebagai potensi dampak negatif. Teks menyebutkan 'commodification of indigenous cultures', 'risk of leakage', 'disturb wildlife behavior', dan 'generate waste'. Peningkatan kegiatan penebangan liar ilegal tidak disebutkan sebagai akibat langsung dari ekowisata; sebaliknya, ekowisata justru disajikan sebagai alternatif untuk kegiatan tersebut.</p>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="question-card" data-question-number="5">
+                <div class="question-number">Soal 5</div>
+                <div class="question-text">
+                    The author's tone in this text can be best described as...
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q5" value="A">
+                        <span>A. overly optimistic.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q5" value="B">
+                        <span>B. neutral and informative.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q5" value="C">
+                        <span>C. strongly critical.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q5" value="D">
+                        <span>D. highly promotional.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q5" value="E">
+                        <span>E. deeply sympathetic.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Penulis menyajikan kedua sisi argumen secara seimbang: manfaat (proponents) dan kekurangan (critics) dari ekowisata. Penulis menggunakan bahasa yang objektif dan informatif untuk menjelaskan masalah yang kompleks ini tanpa memihak salah satu sisi. Oleh karena itu, nada yang paling tepat adalah netral dan informatif.</p>
+                </div>
+            </div>
+
+            <!-- Soal 6 (MCMA) -->
+            <div class="question-card" data-question-number="6">
+                <div class="question-number">Soal 6</div>
+                <div class="question-text">
+                    Which of the following are presented as benefits of ecotourism in the text? (There is more than one correct answer)
+                </div>
+                <div class="options-list">
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>A. It can provide new sources of income for local communities.</span>
+                        <input type="checkbox" name="q6" value="A">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>B. It guarantees the end of all illegal logging activities.</span>
+                        <input type="checkbox" name="q6" value="B">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>C. It generates revenue that can be used for conservation efforts.</span>
+                        <input type="checkbox" name="q6" value="C">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>D. It can encourage local communities to protect their environment.</span>
+                        <input type="checkbox" name="q6" value="D">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>E. It ensures that all tourist money stays within the local villages.</span>
+                        <input type="checkbox" name="q6" value="E">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Teks menyebutkan bahwa ekowisata "can provide alternative livelihoods for local communities" (A), "revenue generated from tourism fees can be reinvested into conservation projects" (C), dan "encouraging communities to become its staunchest protectors" (D). Pilihan B tidak benar karena teks hanya menyebutkan ekowisata dapat menyediakan "alternatif" untuk praktik ilegal, bukan menjamin penghentiannya. Pilihan E tidak benar karena teks menyebutkan risiko "leakage," di mana uang justru mengalir ke perusahaan luar.</p>
+                </div>
+            </div>
+            
+            <!-- Soal 7 -->
+            <div class="question-card" data-question-number="7">
+                <div class="question-number">Soal 7</div>
+                <div class="question-text">
+                    What can be inferred about the future of ecotourism in Kalimantan based on the final paragraph?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q7" value="A">
+                        <span>A. The author believes ecotourism is completely unsustainable and should be stopped.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q7" value="B">
+                        <span>B. Ecotourism in Kalimantan will succeed regardless of what is done to regulate it.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q7" value="C">
+                        <span>C. Its success depends on careful planning, strict regulation, and active participation of local communities.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q7" value="D">
+                        <span>D. The negative impacts are so severe that they outweigh any potential benefits.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q7" value="E">
+                        <span>E. The author thinks that "greenwashing" is an inevitable part of ecotourism.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Paragraf terakhir menyatakan bahwa agar ekowisata "be truly effective, it requires careful planning, strict regulation, and a multi-pronged approach that ensures local communities are... active partners." Ini menunjukkan bahwa keberhasilannya di masa depan sangat bergantung pada implementasi langkah-langkah yang tepat, bukan hanya pada label "sustainable".</p>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="question-card" data-question-number="8">
+                <div class="question-number">Soal 8</div>
+                <div class="question-text">
+                    In the sentence “This model creates a virtuous cycle where the environment's health directly contributes to economic prosperity, encouraging communities to become its staunchest protectors.”, the word "staunchest" is closest in meaning to...
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q8" value="A">
+                        <span>A. weakest.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q8" value="B">
+                        <span>B. most loyal and committed.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q8" value="C">
+                        <span>D. most experienced.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q8" value="D">
+                        <span>C. most vocal.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q8" value="E">
+                        <span>E. least interested.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Kata "staunch" berarti 'sangat setia' atau 'berkomitmen'. Dalam konteks ini, ini berarti masyarakat menjadi pelindung lingkungan yang paling setia dan berkomitmen karena mereka secara finansial diuntungkan dari konservasi tersebut. Pilihan yang paling mendekati adalah "most loyal and committed".</p>
+                </div>
+            </div>
+
+            <!-- Teks untuk Soal 9-14 -->
+            <div class="text-block">
+                <h2 class="text-xl font-bold mb-4 text-gray-700">Teks untuk soal nomor 9 s.d. 14</h2>
+                <p><strong>The Threat of Destructive Fishing in Indonesia</strong></p>
+                <p class="mt-2 text-gray-600">Coral reefs are vital ecosystems, providing a habitat for a quarter of all marine species and supporting the livelihoods of millions of people worldwide. Indonesia, with its vast archipelago, is home to some of the planet's most biodiverse coral reefs, yet these treasures face an existential threat from destructive fishing practices, primarily blast fishing and cyanide fishing.</p>
+                <p class="mt-2 text-gray-600">Blast fishing, which involves detonating homemade bombs underwater, is a particularly devastating practice. The explosions kill or stun all fish in the vicinity, but they also shatter the delicate coral structures that form the foundation of the reef. A single blast can destroy decades of coral growth. The method is used because it provides a quick, large catch, but its long-term impact is a barren, lifeless seabed. It is the aquatic equivalent of clear-cutting a forest.</p>
+                <p class="mt-2 text-gray-600">Similarly, cyanide fishing, a method used to stun and capture live fish for the lucrative aquarium and live fish trade, is highly destructive. Fishermen squirt a liquid cyanide mixture into the coral crevices to immobilize the fish. While it may not cause the immediate, visible destruction of blast fishing, the chemical poisons the coral polyps, leading to widespread bleaching and death. Over time, repeated cyanide use turns vibrant reefs into skeletal graveyards, devoid of life.</p>
+                <p class="mt-2 text-gray-600">The consequences of these practices are dire. Not only do they destroy the marine ecosystem, but they also severely impact the coastal communities that depend on healthy reefs for their food and income. As fish populations dwindle and reefs disappear, fishermen are forced to travel farther or seek alternative, often unsustainable, livelihoods. The solution requires a multi-pronged approach involving stronger law enforcement, community-based management, and educational programs to raise awareness about the importance of sustainable fishing practices. Only through a combination of these efforts can Indonesia protect its priceless marine heritage for future generations.</p>
+            </div>
+
+            <!-- Soal 9 -->
+            <div class="question-card" data-question-number="9">
+                <div class="question-number">Soal 9</div>
+                <div class="question-text">
+                    What is the main topic of this text?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q9" value="A">
+                        <span>A. The economic benefits of the live fish trade.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q9" value="B">
+                        <span>B. The unique marine biodiversity of Indonesia.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q9" value="C">
+                        <span>C. The destructive effects of certain fishing methods on Indonesian coral reefs.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q9" value="D">
+                        <span>D. The role of law enforcement in protecting Indonesia's coastal areas.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q9" value="E">
+                        <span>E. The differences between blast fishing and cyanide fishing.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Teks ini secara keseluruhan membahas dampak buruk dari praktik penangkapan ikan yang merusak, khususnya <i>blast fishing</i> dan <i>cyanide fishing</i>, terhadap terumbu karang di Indonesia. Opsi A, B, D, dan E hanyalah detail pendukung dari gagasan utama tersebut.</p>
+                </div>
+            </div>
+
+            <!-- Soal 10 -->
+            <div class="question-card" data-question-number="10">
+                <div class="question-number">Soal 10</div>
+                <div class="question-text">
+                    Which of the following best describes the author’s attitude toward blast and cyanide fishing?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q10" value="A">
+                        <span>A. Supportive, because it helps fishermen.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q10" value="B">
+                        <span>B. Indifferent, as it is a complex issue.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q10" value="C">
+                        <span>C. Critical, because of its severe environmental impact.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q10" value="D">
+                        <span>D. Curious, about how the methods work.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q10" value="E">
+                        <span>E. Sympathetic, towards the fishermen who use these methods.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Penulis menggunakan kata-kata seperti "existential threat," "devastating practice," dan "highly destructive" untuk menggambarkan metode penangkapan ikan ini. Sikap ini sangat kritis terhadap dampak negatif yang ditimbulkan oleh praktik-praktik tersebut pada lingkungan laut.</p>
+                </div>
+            </div>
+            
+            <!-- Soal 11 -->
+            <div class="question-card" data-question-number="11">
+                <div class="question-number">Soal 11</div>
+                <div class="question-text">
+                    What does the phrase "aquatic equivalent of clear-cutting a forest" mean in the second paragraph?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q11" value="A">
+                        <span>A. It suggests that blast fishing is a very selective method.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q11" value="B">
+                        <span>B. It means that both practices cause widespread and indiscriminate destruction.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q11" value="C">
+                        <span>C. It indicates that blast fishing helps the forest grow faster.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q11" value="D">
+                        <span>D. It highlights the economic benefits of both methods.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q11" value="E">
+                        <span>E. It explains how blast fishing is used to clear land for farming.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Frasa tersebut adalah analogi. <i>Clear-cutting</i> adalah praktik menebang semua pohon di suatu area hutan secara total. Dengan membandingkan <i>blast fishing</i> dengan ini, penulis ingin menekankan bahwa <i>blast fishing</i> menyebabkan kehancuran yang menyeluruh dan tidak pandang bulu terhadap ekosistem terumbu karang, sama seperti <i>clear-cutting</i> menghancurkan hutan.</p>
+                </div>
+            </div>
+
+            <!-- Soal 12 -->
+            <div class="question-card" data-question-number="12">
+                <div class="question-number">Soal 12</div>
+                <div class="question-text">
+                    Based on the text, what is the most significant difference between blast fishing and cyanide fishing?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q12" value="A">
+                        <span>A. Blast fishing is more profitable than cyanide fishing.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q12" value="B">
+                        <span>B. Cyanide fishing is more widespread in Indonesia.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q12" value="C">
+                        <span>C. Blast fishing causes immediate, visible destruction, while cyanide fishing causes a slower, less visible death of coral.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q12" value="D">
+                        <span>D. Cyanide fishing is used for food, while blast fishing is used for the aquarium trade.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q12" value="E">
+                        <span>E. Blast fishing is only used by local communities, while cyanide fishing is used by large companies.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Teks membandingkan kedua metode tersebut: <i>blast fishing</i> "shatter the delicate coral structures" (menghancurkan secara langsung dan terlihat), sementara <i>cyanide fishing</i> "may not cause the immediate, visible destruction" tetapi "poisons the coral polyps, leading to widespread bleaching and death" (menyebabkan kerusakan yang lebih lambat dan tidak langsung terlihat). Jadi, perbedaan utamanya adalah kecepatan dan sifat kerusakan yang ditimbulkan.</p>
+                </div>
+            </div>
+
+            <!-- Soal 13 (MCMA) -->
+            <div class="question-card" data-question-number="13">
+                <div class="question-number">Soal 13</div>
+                <div class="question-text">
+                    If you were a government official tasked with solving this problem, which of the following actions would align with the "multi-pronged approach" suggested in the text? (There is more than one correct answer)
+                </div>
+                <div class="options-list">
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>A. Increasing the number of marine patrols in sensitive areas.</span>
+                        <input type="checkbox" name="q13" value="A">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>B. Banning all fishing activities along Indonesia's coastlines.</span>
+                        <input type="checkbox" name="q13" value="B">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>C. Launching educational campaigns in coastal villages about reef ecology.</span>
+                        <input type="checkbox" name="q13" value="C">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>D. Funding programs to help fishermen develop sustainable aquaculture or ecotourism.</span>
+                        <input type="checkbox" name="q13" value="D">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container flex items-center gap-2">
+                        <span>E. Encouraging fishermen to use more powerful explosives to be more efficient.</span>
+                        <input type="checkbox" name="q13" value="E">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Teks menyarankan "a multi-pronged approach involving stronger law enforcement, community-based management, and educational programs". Pilihan A (patroli laut) sejalan dengan "stronger law enforcement". Pilihan C (kampanye edukasi) sejalan dengan "educational programs". Pilihan D (pendanaan program) sejalan dengan "community-based management" dan memberikan alternatif mata pencaharian. Pilihan B tidak sesuai karena terlalu ekstrem, dan pilihan E bertentangan dengan tujuan teks.</p>
+                </div>
+            </div>
+            
+            <!-- Soal 14 -->
+            <div class="question-card" data-question-number="14">
+                <div class="question-number">Soal 14</div>
+                <div class="question-text">
+                    What is the likely long-term consequence for a fishing community that relies heavily on blast and cyanide fishing?
+                </div>
+                <div class="options-list">
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q14" value="A">
+                        <span>A. They will become wealthy from the live fish trade.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q14" value="B">
+                        <span>B. Their fish catches will eventually collapse due to the destruction of the reef ecosystem.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q14" value="C">
+                        <span>C. The coral reefs will adapt and become resistant to explosions and cyanide.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q14" value="D">
+                        <span>D. The government will reward them for their efficiency.</span>
+                    </label>
+                    <label class="option-button flex items-center gap-2">
+                        <input type="radio" name="q14" value="E">
+                        <span>E. They will attract a large number of international tourists.</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4">
+                    <p class="font-bold text-gray-700">Pembahasan:</p>
+                    <p>Teks menyatakan, "As fish populations dwindle and reefs disappear, fishermen are forced to travel farther or seek alternative, often unsustainable, livelihoods." Ini menyiratkan bahwa penghancuran ekosistem terumbu karang akan menyebabkan keruntuhan perikanan, yang berdampak negatif pada masyarakat pesisir yang bergantung padanya.</p>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button w-full">Submit Jawaban</button>
+        </form>
+
+        <div id="result" class="result-section">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Hasil Kuis</h2>
+            <p id="score" class="text-xl text-gray-700 mb-4"></p>
+            <p id="final-message" class="text-lg text-gray-600"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const answers = {
+                q1: 'C',
+                q2: 'C',
+                q3: 'B',
+                q4: 'C',
+                q5: 'B',
+                q6: ['A', 'C', 'D'],
+                q7: 'C',
+                q8: 'B',
+                q9: 'C',
+                q10: 'C',
+                q11: 'B',
+                q12: 'C',
+                q13: ['A', 'C', 'D'],
+                q14: 'B'
+            };
+
+            let score = 0;
+            const totalQuestions = Object.keys(answers).length;
+            
+            Object.keys(answers).forEach(qNum => {
+                const questionElement = document.querySelector(`[data-question-number="${qNum.substring(1)}"]`);
+                const explanation = questionElement.querySelector('.explanation');
+                let isCorrect = false;
+
+                if (Array.isArray(answers[qNum])) {
+                    // Handle MCMA questions
+                    const userAnswers = Array.from(document.querySelectorAll(`input[name="${qNum}"]:checked`)).map(el => el.value);
+                    const correctAnswers = answers[qNum];
+                    
+                    if (userAnswers.length === correctAnswers.length && userAnswers.every(val => correctAnswers.includes(val))) {
+                        isCorrect = true;
+                    }
+
+                    const allCheckboxes = questionElement.querySelectorAll('input[type="checkbox"]');
+                    allCheckboxes.forEach(checkbox => {
+                        const label = checkbox.closest('label');
+                        label.classList.remove('correct-answer', 'wrong-answer');
+                        if (correctAnswers.includes(checkbox.value)) {
+                            label.classList.add('correct-answer');
+                        }
+                        if (userAnswers.includes(checkbox.value) && !correctAnswers.includes(checkbox.value)) {
+                            label.classList.add('wrong-answer');
+                        }
+                    });
+
+                    if (!isCorrect) {
+                         userAnswers.forEach(userAnswer => {
+                            if (!correctAnswers.includes(userAnswer)) {
+                                const wrongLabel = questionElement.querySelector(`input[value="${userAnswer}"]`).closest('label');
+                                wrongLabel.classList.add('wrong-answer');
+                            }
+                        });
+                    }
+
+                } else {
+                    // Handle single choice questions
+                    const userAnswer = document.querySelector(`input[name="${qNum}"]:checked`);
+                    
+                    if (userAnswer && userAnswer.value === answers[qNum]) {
+                        isCorrect = true;
+                    }
+
+                    const allRadios = questionElement.querySelectorAll('input[type="radio"]');
+                    allRadios.forEach(radio => {
+                        const label = radio.closest('label');
+                        label.classList.remove('correct-answer', 'wrong-answer');
+                        if (radio.value === answers[qNum]) {
+                            label.classList.add('correct-answer');
+                        }
+                        if (userAnswer && radio.value === userAnswer.value && userAnswer.value !== answers[qNum]) {
+                            label.classList.add('wrong-answer');
+                        }
+                    });
+                }
+                
+                if (isCorrect) {
+                    score++;
+                } else {
+                    explanation.classList.add('show');
+                }
+            });
+
+            const scoreDisplay = document.getElementById('score');
+            const resultSection = document.getElementById('result');
+            const finalMessage = document.getElementById('final-message');
+            
+            scoreDisplay.textContent = `Skor Anda: ${score} dari ${totalQuestions}`;
+            
+            let message = '';
+            const percentage = (score / totalQuestions) * 100;
+            if (percentage >= 90) {
+                message = "Selamat! Anda luar biasa dalam memahami teks ini.";
+            } else if (percentage >= 70) {
+                message = "Bagus sekali! Anda telah memahami sebagian besar konsep dengan baik.";
+            } else {
+                message = "Terus semangat! Perhatikan bagian pembahasan untuk meningkatkan pemahaman Anda.";
+            }
+            finalMessage.textContent = message;
+
+            resultSection.style.display = 'block';
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
